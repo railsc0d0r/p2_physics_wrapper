@@ -1,3 +1,10 @@
+#
+# An abstract module to be included in models using the p2-physics-engine
+#
+# https://github.com/schteppe/p2.js
+#
+# It wraps the p2-objects via therubyracer and provides ruby-objects
+#
 require "p2_physics_wrapper/version"
 
 module P2PhysicsWrapper
