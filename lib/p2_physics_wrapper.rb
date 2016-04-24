@@ -6,6 +6,7 @@
 # It wraps the p2-objects via therubyracer and provides ruby-objects
 #
 require "p2_physics_wrapper/version"
+require "p2_physics_wrapper/p2"
 
 module P2PhysicsWrapper
 
