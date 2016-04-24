@@ -11,5 +11,21 @@ module P2PhysicsWrapper::P2
     def is_loaded?
       @p2.class == V8::Object
     end
+
+    def World
+      @p2['World']
+    end
+
+    def Body
+      @p2['Body']
+    end
+
+    def Shape
+      @p2['Shape']
+    end
+
+    def AABB
+      @p2['AABB']
+    end
   end
 end
