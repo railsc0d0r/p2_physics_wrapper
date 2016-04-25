@@ -12,20 +12,13 @@ module P2PhysicsWrapper::P2
       @p2.class == V8::Object
     end
 
-    def World
-      @p2['World']
+    def method_missing(meth, *args)
+      unless @p2[meth].nil?
+        return @p2[meth.to_s]
+      else
+        raise NoMethodError.new "Object '#{meth}' undefined by P2PhysicsWrapper::P2"
+      end
     end
 
-    def Body
-      @p2['Body']
-    end
-
-    def Shape
-      @p2['Shape']
-    end
-
-    def AABB
-      @p2['AABB']
-    end
   end
 end
