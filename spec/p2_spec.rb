@@ -24,4 +24,8 @@ describe P2PhysicsWrapper::P2 do
     aabb = P2PhysicsWrapper::P2.AABB.new
     expect(aabb['constructor'].name).to eq 'AABB'
   end
+
+  it "raises a NoMethodError when requested object isn't provided by p2.js" do
+    expect{P2PhysicsWrapper::P2.XYZ}.to raise_error(NoMethodError, "Object 'XYZ' undefined by P2PhysicsWrapper::P2")
+  end
 end
