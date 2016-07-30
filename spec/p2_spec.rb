@@ -27,6 +27,16 @@ describe P2PhysicsWrapper::P2 do
     expect(body.angularVelocity).to eq options[:angularVelocity]
   end
 
+  it "provides a Line-object that can be instanciated" do
+    line = P2PhysicsWrapper::P2.Line.new
+    expect(line['constructor'].name).to eq 'Line'
+  end
+
+  it "provides a Convex-object that can be instanciated" do
+    convex = P2PhysicsWrapper::P2.Convex.new
+    expect(convex['constructor'].name).to eq 'Convex'
+  end
+
   it "provides a Shape-object that can be instanciated" do
     shape = P2PhysicsWrapper::P2.Shape.new
     expect(shape['constructor'].name).to eq 'Shape'
@@ -84,16 +94,6 @@ describe P2PhysicsWrapper::P2 do
     expect(world.bodies.to_a).not_to be_empty
     expect(world.bodies.first.shapes.first[:constructor].name).to eq "Circle"
     expect(world.bodies.first.shapes.first.radius).to eq circle_options[:radius]
-  end
-
-  it "provides a Line-object that can be instanciated" do
-    line = P2PhysicsWrapper::P2.Line.new
-    expect(line['constructor'].name).to eq 'Line'
-  end
-
-  it "provides a Convex-object that can be instanciated" do
-    convex = P2PhysicsWrapper::P2.Convex.new
-    expect(convex['constructor'].name).to eq 'Convex'
   end
 
   it "raises a NoMethodError when requested object isn't provided by p2.js" do
