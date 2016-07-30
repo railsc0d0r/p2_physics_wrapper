@@ -63,6 +63,22 @@ describe P2PhysicsWrapper::P2 do
     expect(@body.shapes.first.radius).to eq @circle_options[:radius]
   end
 
+  it "can add a defined convex as a shape to the instanciated body" do
+    convex_options = { vertices:
+      [
+        [-1.3282, 0.6085],
+        [-1.3282, -0.6085],
+        [-1.27, -0.5397000000000001],
+        [-1.27, 0.5397000000000001]
+      ]
+    }
+    convex = P2PhysicsWrapper::P2.Convex.new convex_options
+    @body.addShape convex
+    expect(@body.shapes.to_a).not_to be_empty
+    expect(@body.shapes.first[:constructor].name).to eq "Convex"
+    expect(@body.shapes.first.vertices.map {|v| v.to_a}).to eq convex_options[:vertices]
+  end
+
   it "can add an instanciated body to a world" do
     @body.addShape @circle
     @world.addBody @body
