@@ -20,9 +20,19 @@ describe P2PhysicsWrapper::P2 do
     expect(shape['constructor'].name).to eq 'Shape'
   end
 
-  it "provides a AABB-object that can be instanciated" do
-    aabb = P2PhysicsWrapper::P2.AABB.new
-    expect(aabb['constructor'].name).to eq 'AABB'
+  it "provides a Circle-object w/ options that can be instanciated" do
+    circle = P2PhysicsWrapper::P2.Circle.new
+    expect(circle['constructor'].name).to eq 'Circle'
+  end
+
+  it "provides a Line-object that can be instanciated" do
+    line = P2PhysicsWrapper::P2.Line.new
+    expect(line['constructor'].name).to eq 'Line'
+  end
+
+  it "provides a Convex-object that can be instanciated" do
+    convex = P2PhysicsWrapper::P2.Convex.new
+    expect(convex['constructor'].name).to eq 'Convex'
   end
 
   it "raises a NoMethodError when requested object isn't provided by p2.js" do
