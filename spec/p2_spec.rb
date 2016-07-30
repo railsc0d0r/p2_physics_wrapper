@@ -10,9 +10,21 @@ describe P2PhysicsWrapper::P2 do
     expect(world['constructor'].name).to eq 'World'
   end
 
-  it "provides a Body-object that can be instanciated" do
-    body = P2PhysicsWrapper::P2.Body.new
+  it "provides a Body-object w/ options that can be instanciated" do
+    options = {
+      mass:10,
+      position: [10, 0],
+      angle: 0.79,
+      velocity: [0, 0],
+      angularVelocity: 0
+    }
+    body = P2PhysicsWrapper::P2.Body.new options
     expect(body['constructor'].name).to eq 'Body'
+    expect(body.mass).to eq options[:mass]
+    expect(body.position.to_a).to eq options[:position]
+    expect(body.angle).to eq options[:angle]
+    expect(body.velocity.to_a).to eq options[:velocity]
+    expect(body.angularVelocity).to eq options[:angularVelocity]
   end
 
   it "provides a Shape-object that can be instanciated" do
