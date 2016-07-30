@@ -26,7 +26,7 @@ describe P2PhysicsWrapper::P2 do
     }
     circle = P2PhysicsWrapper::P2.Circle.new options
     expect(circle['constructor'].name).to eq 'Circle'
-    expect(circle.radius).to eq 10
+    expect(circle.radius).to eq options[:radius]
   end
 
   it "provides a Line-object that can be instanciated" do
