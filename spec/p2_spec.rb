@@ -51,14 +51,14 @@ describe P2PhysicsWrapper::P2 do
     expect(line['constructor'].name).to eq 'Line'
   end
 
-  it "provides a Convex-object that can be instanciated" do
-    expect(@convex['constructor'].name).to eq 'Convex'
-    expect(@convex.vertices.map {|v| v.to_a}).to eq @convex_options[:vertices]
-  end
-
   it "provides a Shape-object that can be instanciated" do
     shape = P2PhysicsWrapper::P2.Shape.new
     expect(shape['constructor'].name).to eq 'Shape'
+  end
+
+  it "provides a Convex-object that can be instanciated" do
+    expect(@convex['constructor'].name).to eq 'Convex'
+    expect(@convex.vertices.map {|v| v.to_a}).to eq @convex_options[:vertices]
   end
 
   it "provides a Circle-object that can be instanciated w/ options" do
