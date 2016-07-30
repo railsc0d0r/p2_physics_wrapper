@@ -41,6 +41,27 @@ describe P2PhysicsWrapper::P2 do
     expect(circle.radius).to eq options[:radius]
   end
 
+  it "can add a shape to the instanciated body" do
+    body_options = {
+      mass:10,
+      position: [10, 0],
+      angle: 0.79,
+      velocity: [0, 0],
+      angularVelocity: 0
+    }
+    body = P2PhysicsWrapper::P2.Body.new body_options
+
+    circle_options = {
+      radius: 10
+    }
+    circle = P2PhysicsWrapper::P2.Circle.new circle_options
+
+    body.addShape circle
+    expect(body.shapes.to_a).not_to be_empty
+    expect(body.shapes.first[:constructor].name).to eq "Circle"
+    expect(body.shapes.first.radius).to eq circle_options[:radius]
+  end
+
   it "provides a Line-object that can be instanciated" do
     line = P2PhysicsWrapper::P2.Line.new
     expect(line['constructor'].name).to eq 'Line'
